@@ -1,0 +1,26 @@
+git checkout master <- przełączenie na branch "master" (lokalny)
+git log --all --graph --oneline <- wyświetlenie grafu z branchami i commitami
+git fetch <- pobranie zmian z servera, ale bez aplikowania ich u siebie lokanie
+git log --all --graph --oneline
+git merge origin/dev <- zaaplikowanie zmian z servera na swoim lokalnym branchu master
+
+---- jeżeli konflikt
+trzeba sprawdzić wszystkie pliki konfliktowe:
+    git status
+git add <każdy z plików>
+git commit <- zatwierdzić rozwiązanie konfliktu
+----
+
+aktualizowanie zmian na server:
+git status
+git add <pliki>
+git commit -m "<wiadomość commitu>" <- dodanie zmian lokalnie u siebie w repozytorium lokalnym
+git push <origin dev> <- przesłanie zmian na server
+
+
+----
+----
+git fetch <- zciągnąć zmiany z servera
+git checkout -b dev <- utworzenie lokalnego brancha development (i od razu przełączenie się na niego)
+git branch development -u origin/dev <- dodanie śledzenia zdalnej gałęzi
+git branch -vv <- spradzenie, czy śledzenie jest ustawione OK
