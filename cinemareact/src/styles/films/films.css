@@ -1,6 +1,40 @@
-.carousel {
-    position: relative;
-    width: 80vw;
-    height:20vh;
-    transform: translate(calc(50vw - 50%), 10vh);
+.cardImg {
+    height: 176px;
+    width: 128px;
+    justify-content: center;
+    transform: scale(1);
+    transition: transform .2s;
+}
+
+.singleCard {
+    width: 134px !important;
+    padding-left: 5px !important;
+    padding-right: 5px !important;
+    overflow: hidden !important;
+}
+
+.singleCard:hover {
+    cursor: pointer;
+}
+
+.singleCard:hover .cardImg{
+    transform: scale(1.7);
+}
+
+.filmContainer {
+    padding: 20px 20px;
+    flex-wrap: nowrap !important;
+    overflow: hidden;
+}
+
+.rateBadge {
+    justify-content: center;
+}
+
+.linkTo {
+    width: 144px !important;
+    display: flex;
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
 }
