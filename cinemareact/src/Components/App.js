@@ -12,19 +12,18 @@ const App = () => {
             <TopNavbar></TopNavbar>
             <Switch>
                 <Route exact path={"/"} />
-                <Route path={"/repertuar"}/>
-                <Route path={"/cennik"} />
-                <Route path={"/films"} component={Films}>
+                {/*<Route path={"/repertuar"}/>*/}
+                {/*<Route path={"/cennik"} />*/}
+                <Route exact path={"/films"} component={Films}>
                 </Route>
-                <Route path={"/films/:id"} render={(match) => {
-                    return <Details params={match.params.id}/>
+                <Route exact path={"/films/:id/details"} render={({match}) => {
+                    return <Details filmId={match.params.id}/>
                 }}>
                 </Route>
-                <Route path={"/ticket/:film_id/:time/:kino"}/>
             </Switch>
         </BrowserRouter>
 
-    );
-};
+    )
+}
 
 export default App;

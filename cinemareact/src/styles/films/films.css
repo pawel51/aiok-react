@@ -38,3 +38,12 @@
     margin: 0;
     text-decoration: none;
 }
+
+.detailsContainer {
+    padding-top: 30px;
+}
+
+.detailsImage {
+    width: 375px;
+    height: 555px;
+}

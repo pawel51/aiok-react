@@ -13,6 +13,7 @@ app.use(bodyParser.urlencoded({
 }));
 
 const PATH = './films.json'
+const PATH2 = './films2.json'
 
 const getLastId = (filmsJson) => {
     var maxId = 0;
@@ -37,6 +38,26 @@ app.get('/films', (req, res) => {
     });
 });
 
+app.get('/film/:id/details', (req, res) => {
+    fs.readFile(PATH2, 'utf8', (err, filmsJson) => {
+        if (err) {
+            console.log("File read failed in GET /film/" + req.params.id + "/details" + " : "+ err);
+            res.status(500).send('File read failed');
+            return;
+        }
+        var films = JSON.parse(filmsJson);
+        var film = films.find(filmtmp => filmtmp.filmId == req.params.id);
+        if (!film) {
+            console.log("Can't find film with id: " + req.params.id);
+            res.status(500).send('Cant find film with id: ' + req.params.id);
+            return;
+        }
+        var filmJSON = JSON.stringify(film);
+        console.log("GET /films/"  + req.params.id + "/details");
+        res.send(filmJSON);
+    });
+});
+
 app.get('/film/:id', (req, res) => {
     fs.readFile(PATH, 'utf8', (err, filmsJson) => {
         if (err) {
@@ -55,8 +76,9 @@ app.get('/film/:id', (req, res) => {
         console.log("GET /films/" + req.params.id);
         res.send(filmJSON);
     });
-
 });
+
+
 
 
 app.get('/date/:date', (req, res) => {

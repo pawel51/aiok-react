@@ -19,8 +19,6 @@ const Films = () => {
 
 
     useEffect(() => {
-
-
         const fetchData = async() => {
             const ids = [
                 "0","1","2","3","4","5","6","7","8"
@@ -34,7 +32,7 @@ const Films = () => {
             })
             try {
                 const tempImgs = []
-                for (const [index, config] of configs.entries()){
+                for (const config of configs){
                     const response = await axios(config)
                     tempImgs.push(response["data"])
                 }
@@ -43,7 +41,6 @@ const Films = () => {
                 console.log("error fetching img data", err)
             }
         }
-
         fetchData()
     }, [])
 
@@ -56,8 +53,8 @@ const Films = () => {
             <Row className={"filmContainer"}>
                 {data.map((film) => {
                     return (
-                        <Link className={"linkTo"} to={`/films/${film["filmId"]}`}>
-                            <FilmCard  data={film}/>
+                        <Link className={"linkTo"} to={`/films/${film["filmId"]}/details`}>
+                            <FilmCard key={film.id} data={film}/>
                         </Link>
                         )
                 })}
