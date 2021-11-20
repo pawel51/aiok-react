@@ -19,26 +19,20 @@ const Films = () => {
     useEffect(() => {
 
 
-        const fetchData = async(tempImgs) => {
-            const url = process.env.REACT_APP_IMDB_URL
-            const api_key = process.env.REACT_APP_IMDB_API_KEY
+        const fetchData = async() => {
             const ids = [
-                "tt0111161",
-                "tt0068646",
-                "tt0071562",
-                "tt0468569",
-                "tt0050083"
+                "0","1","2"
             ]
-            const configs = ids.map(v => {
+            const configs = ids.map((v,i) => {
                 return {
                     method: 'get',
-                    url: `${url}/Title/${api_key}/${v}/images`,
+                    url: `http://localhost:7777/film/${i}`,
                     headers: { }
                 }
             })
             try {
                 const tempImgs = []
-                for (const config of configs){
+                for (const [index, config] of configs.entries()){
                     const response = await axios(config)
                     tempImgs.push(response["data"]["image"])
                 }
@@ -76,6 +70,16 @@ const Films = () => {
                     <Carousel.Caption>
                         <h5>Second slide label</h5>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    </Carousel.Caption>
+                </Carousel.Item>
+                <Carousel.Item>
+                    <img
+                        className="d-block w-100"
+                        src={imgs[2]}
+                    />
+                    <Carousel.Caption>
+                        <h5>Third slide label</h5>
+                        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
                     </Carousel.Caption>
                 </Carousel.Item>
                 <Carousel.Item>
