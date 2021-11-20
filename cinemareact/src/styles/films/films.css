@@ -1,0 +1,6 @@
+.carousel {
+    position: relative;
+    width: 80vw;
+    height:20vh;
+    transform: translate(calc(50vw - 50%), 10vh);
+}
