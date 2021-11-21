@@ -27,7 +27,7 @@ const getLastId = (filmsJson) => {
 }
 
 app.get('/films', (req, res) => {
-    fs.readFile(PATH, 'utf8', (err, filmsJson) => {
+    fs.readFile(PATH2, 'utf8', (err, filmsJson) => {
         if (err) {
             console.log("File read failed in GET /film"+" : "+ err);
             res.status(500).send('File read failed');

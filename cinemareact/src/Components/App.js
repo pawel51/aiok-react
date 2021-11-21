@@ -4,6 +4,7 @@ import {BrowserRouter, Switch, Route} from "react-router-dom";
 import Films from "./Films/Films";
 import TopNavbar from "./TopNavbar";
 import Details from "./Films/Details";
+import Edit from "./Films/Edit";
 
 const App = () => {
     return (

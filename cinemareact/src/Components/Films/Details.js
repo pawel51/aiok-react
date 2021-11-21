@@ -1,17 +1,21 @@
 import React, {useEffect, useState} from 'react';
-import {Col, Container, Image, ListGroup, Row} from "react-bootstrap";
+import {Button, Col, Container, Image, ListGroup, Row} from "react-bootstrap";
 import axios from "axios";
+import Edit from "./Edit";
+import {FontAwesomeIcon as FAI} from "@fortawesome/react-fontawesome";
+import {faEdit} from "@fortawesome/free-regular-svg-icons";
+import {Link} from "react-router-dom";
 
 const Details = (props) => {
-    const [data, setData] = useState([{title:"",year:"",runtimeStr:"",awards:"",directors:"",writers:"",stars:""}])
+    const [data, setData] = useState([{title:"",releaseDate:"",runtimeStr:"",awards:"",directors:"",writers:"",stars:"", image:"", smallImage:"", plotLocal:""}])
+    const [isLoaded, setLoaded] = useState(false)
+
 
     useEffect(() => {
         const fetchData = async() => {
             const ids = [
                 props.filmId
             ]
-            //todo config na facjaty aktorów, zdjęcia
-
             const configs = ids.map((v,i) => {
                 return {
                     method: 'get',
@@ -31,25 +35,28 @@ const Details = (props) => {
             }
         }
         fetchData()
+            .then(() => setLoaded(true))
     }, [])
 
     return (
         <Container className={"detailsContainer"}>
             <Row>
-                <Col>
+                <Col xl={4} lg={5} md={5} sm={7}>
                     <Image className={"detailsImage"} src={data[0].image} />
                 </Col>
-                <Col>
+                <Col lg={4} md={8} sm={12}>
                 {/*    info     */}
                     <ListGroup variant="flush">
-                        <ListGroup.Item>TITLE:      {data[0].title}</ListGroup.Item>
-                        <ListGroup.Item>ACTORS:     {data[0].year}</ListGroup.Item>
-                        <ListGroup.Item>RUNTIME:    {data[0].runtimeStr}</ListGroup.Item>
-                        <ListGroup.Item>AWARDS:     {data[0].awards}</ListGroup.Item>
-                        <ListGroup.Item>DIRECTORS:  {data[0].directors}</ListGroup.Item>
-                        <ListGroup.Item>WRITERS:    {data[0].writers}</ListGroup.Item>
-                        <ListGroup.Item>STARS:      {data[0].stars}</ListGroup.Item>
+                        <ListGroup.Item className={"listGroupItem"}>TITLE:      {data[0].title}</ListGroup.Item>
+                        <ListGroup.Item className={"listGroupItem"}>RELEASE:    {data[0].releaseDate}</ListGroup.Item>
+                        <ListGroup.Item className={"listGroupItem"}>RUNTIME:    {data[0].runtimeStr}</ListGroup.Item>
+                        <ListGroup.Item className={"listGroupItem"}>AWARDS:     {data[0].awards}</ListGroup.Item>
+                        <ListGroup.Item className={"listGroupItem"}>DIRECTORS:  {data[0].directors}</ListGroup.Item>
+                        <ListGroup.Item className={"listGroupItem"}>WRITERS:    {data[0].writers}</ListGroup.Item>
+                        <ListGroup.Item className={"listGroupItem"}>STARS:      {data[0].stars}</ListGroup.Item>
                     </ListGroup>
+                    {isLoaded? <Edit data={data[0]} setData={setData}/> : null}
+
                 </Col>
             </Row>
             <Row>
