@@ -1,9 +1,10 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Button, Form, InputGroup, Modal, Row} from "react-bootstrap";
 import { useForm } from 'react-hook-form';
 import {FontAwesomeIcon as FAI} from "@fortawesome/react-fontawesome";
 import {faEdit, faSave} from "@fortawesome/free-regular-svg-icons";
 import '../../styles/films/films.css'
+import axios from "axios";
 
 
 const Edit = (props) => {
@@ -46,8 +47,14 @@ const Edit = (props) => {
     const handleClose = () => setShow(false)
 
     const onSubmit = data => {
-        console.log(JSON.stringify(data, null, 2));
-        console.log("I am alive");
+        axios.put(`http://localhost:7777/film/${data.filmId}`, data)
+            .then((response) => {
+                setData([response.data])
+            })
+            .catch((error) => {
+                console.log("Error while editing the data: "+error)
+            });
+        handleClose()
     };
 
     return (
@@ -59,7 +66,7 @@ const Edit = (props) => {
             <Modal show={show} onHide={handleClose}>
                 <Form onSubmit={handleSubmit(onSubmit)}>
                     <Modal.Header closeButton>
-                        <Modal.Title>Edit item</Modal.Title>
+                        <Modal.Title>Edit movie</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
                         <InputGroup className={'input-group-edit'}>
@@ -71,6 +78,7 @@ const Edit = (props) => {
                         <InputGroup className={'input-group-edit'}>
                             <InputGroup.Text style={{width:"80px"}} id="inputGroup-sizing-sm">Release</InputGroup.Text>
                             <input type={"date"} id={"Release"}
+                                   value={data.releaseDate}
                                    {...register('release')}
                                    className={`form-control ${errors.release ? 'is-invalid' : ''}`}/>
                         </InputGroup>
@@ -102,6 +110,24 @@ const Edit = (props) => {
                             <InputGroup.Text style={{width:"80px"}} id="inputGroup-sizing-sm">Stars</InputGroup.Text>
                             <input type={"text"} id={"Writers"}
                                    {...register('stars')}
+                                   className={`form-control ${errors.title ? 'is-invalid' : ''}`}/>
+                        </InputGroup>
+                        <InputGroup className={'input-group-edit'}>
+                            <InputGroup.Text style={{width:"80px"}} id="inputGroup-sizing-sm">Rating</InputGroup.Text>
+                            <input type={"text"} id={"Rating"}
+                                   {...register('imDbRating')}
+                                   className={`form-control ${errors.title ? 'is-invalid' : ''}`}/>
+                        </InputGroup>
+                        <InputGroup className={'input-group-edit'}>
+                            <InputGroup.Text style={{width:"80px"}} id="inputGroup-sizing-sm">smallImage</InputGroup.Text>
+                            <input type={"text"} id={"smallImage"}
+                                   {...register('smallImage')}
+                                   className={`form-control ${errors.title ? 'is-invalid' : ''}`}/>
+                        </InputGroup>
+                        <InputGroup className={'input-group-edit'}>
+                            <InputGroup.Text style={{width:"80px"}} id="inputGroup-sizing-sm">image</InputGroup.Text>
+                            <input type={"text"} id={"image"}
+                                   {...register('image')}
                                    className={`form-control ${errors.title ? 'is-invalid' : ''}`}/>
                         </InputGroup>
                     </Modal.Body>

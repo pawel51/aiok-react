@@ -1,12 +1,12 @@
 import React, {useEffect, useState} from 'react';
-import fs from 'fs'
 import axios from 'axios'
-import {Carousel, Button, Col, Container, Image, Row} from "react-bootstrap";
+import {Button, Col, Container, Image, Row} from "react-bootstrap";
 import '../../styles/films/films.css'
 import FilmCard from "./FilmCard";
 import {Link} from "react-router-dom";
 import {faCaretSquareLeft, faCaretSquareRight} from "@fortawesome/free-regular-svg-icons";
 import {FontAwesomeIcon as FAI} from "@fortawesome/react-fontawesome";
+import Add from "./Add";
 
 
 
@@ -15,20 +15,13 @@ const Films = () => {
 
     const [data, setData] = useState([]);
     const [offset, setOffset] = useState(0)
+    const [isLoaded, setLoaded] = useState(false)
     const move = 200;
+
 
     useEffect(() => {
         const fetchData = async() => {
-            const ids = [
-                "0","1","2","3","4","5","6","7","8"
-            ]
-            // const configs = ids.map((v,i) => {
-            //     return {
-            //         method: 'get',
-            //         url: `http://localhost:7777/film/${i+1}`,
-            //         headers: { }
-            //     }
-            // })
+
             const config = {
                 method: "get",
                 url: "http://localhost:7777/films",
@@ -36,10 +29,7 @@ const Films = () => {
             }
             try {
                 const tempData = []
-                // for (const config of configs){
-                //     const response = await axios(config)
-                //     tempImgs.push(response["data"])
-                // }
+
                 const response = await axios(config)
                 tempData.push(...response["data"])
                 setData(tempData)
@@ -48,13 +38,14 @@ const Films = () => {
             }
         }
         fetchData()
+            .then(() => setLoaded(true))
     }, [])
 
 
-    const moveLeft = () => {
+    const moveRight = () => {
         setOffset(offset-move)
     }
-    const moveRight = () => {
+    const moveLeft = () => {
         setOffset(offset+move)
     }
     useEffect(() => {
@@ -62,6 +53,12 @@ const Films = () => {
             link.setAttribute("style", `transform:translateX(${offset}px);`)
         })
     }, [offset])
+
+    const updateFilmAfterAdd = (film) => {
+        let tempFilms = [...data]
+        tempFilms.push(film)
+        setData(tempFilms)
+    }
 
 
     return (
@@ -93,6 +90,7 @@ const Films = () => {
 
 
             </Row>
+            <Add data={data} updateFilms={updateFilmAfterAdd}/>
         </Container>
 
 

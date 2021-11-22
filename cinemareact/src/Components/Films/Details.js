@@ -2,12 +2,10 @@ import React, {useEffect, useState} from 'react';
 import {Button, Col, Container, Image, ListGroup, Row} from "react-bootstrap";
 import axios from "axios";
 import Edit from "./Edit";
-import {FontAwesomeIcon as FAI} from "@fortawesome/react-fontawesome";
-import {faEdit} from "@fortawesome/free-regular-svg-icons";
-import {Link} from "react-router-dom";
+import Delete from "./Delete";
 
 const Details = (props) => {
-    const [data, setData] = useState([{title:"",releaseDate:"",runtimeStr:"",awards:"",directors:"",writers:"",stars:"", image:"", smallImage:"", plotLocal:""}])
+    const [data, setData] = useState([{title:"",releaseDate:"",runtimeStr:"",awards:"",directors:"",writers:"",stars:"", image:"", smallImage:"", plot:""}])
     const [isLoaded, setLoaded] = useState(false)
 
 
@@ -46,6 +44,7 @@ const Details = (props) => {
                 </Col>
                 <Col lg={4} md={8} sm={12}>
                 {/*    info     */}
+
                     <ListGroup variant="flush">
                         <ListGroup.Item className={"listGroupItem"}>TITLE:      {data[0].title}</ListGroup.Item>
                         <ListGroup.Item className={"listGroupItem"}>RELEASE:    {data[0].releaseDate}</ListGroup.Item>
@@ -55,12 +54,20 @@ const Details = (props) => {
                         <ListGroup.Item className={"listGroupItem"}>WRITERS:    {data[0].writers}</ListGroup.Item>
                         <ListGroup.Item className={"listGroupItem"}>STARS:      {data[0].stars}</ListGroup.Item>
                     </ListGroup>
-                    {isLoaded? <Edit data={data[0]} setData={setData}/> : null}
+
+
+                    <div className={"buttonCont"}>
+                        {isLoaded? <Delete data={data[0]} filmId={data[0].filmId} title={data[0].title} setData={setData}/> : null}
+
+                        {isLoaded? <Edit data={data[0]} setData={setData}/> : null}
+                    </div>
+
+
 
                 </Col>
             </Row>
-            <Row>
-                {data.plotLocal}
+            <Row className={"plotBox"}>
+                <p className={"plot"}>{data[0].plot}</p>
             </Row>
             <Row></Row>
         </Container>

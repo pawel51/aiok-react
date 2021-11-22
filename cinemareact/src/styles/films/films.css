@@ -67,17 +67,36 @@
     padding-bottom: 10px;
 }
 
+.buttonCont {
+    bottom: 0;
+}
+
+
+
 .editButton {
     background-color: gold !important;
     margin-top: 20px !important;
+}
+.delButton {
+    background-color: indianred !important;
+    margin-top: 20px !important;
+    margin-right: 10px;
+    margin-left: 10px;
 }
 
 .editIcon {
     transform: rotate(0deg);
     transition: 0.5s;
 }
+.delIcon {
+    transform: rotate(0deg);
+    transition: 0.5s;
+}
 
 .editButton:hover .editIcon {
+    transform: rotate(720deg);
+}
+.delButton:hover .delIcon {
     transform: rotate(720deg);
 }
 
@@ -99,4 +118,49 @@
 
 .rightCont {
     justify-content: right !important;
+}
+
+.addFilmButton{
+    margin: 40px;
+    width: 200px;
+    height: 60px;
+    background-color: darkorange !important;
+}
+
+#addIcon {
+    transform: rotate3d(1,1,1,0deg);
+    transition: .5s;
+}
+
+.addFilmButton:hover #addIcon{
+    transform: rotate3d(1,1,1,360deg);
+}
+
+.plotBox {
+    margin-top: 20px !important;
+    border: 2px solid black;
+}
+
+.plot {
+    padding: 10px;
+    font-family: serif;
+
+}
+
+@keyframes iconbounce {
+    0% {
+        transform: translateX(-50px);
+    }
+    50% {
+        transform: translateX(50px);
+    }
+    100% {
+        transform: translateX(-50px);
+    }
+
+}
+
+.brandName {
+    font-size: 48px;
+
 }

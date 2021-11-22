@@ -13,7 +13,6 @@ app.use(bodyParser.urlencoded({
 }));
 
 const PATH = './films.json'
-const PATH2 = './films2.json'
 
 const getLastId = (filmsJson) => {
     var maxId = 0;
@@ -27,7 +26,7 @@ const getLastId = (filmsJson) => {
 }
 
 app.get('/films', (req, res) => {
-    fs.readFile(PATH2, 'utf8', (err, filmsJson) => {
+    fs.readFile(PATH, 'utf8', (err, filmsJson) => {
         if (err) {
             console.log("File read failed in GET /film"+" : "+ err);
             res.status(500).send('File read failed');
@@ -39,7 +38,7 @@ app.get('/films', (req, res) => {
 });
 
 app.get('/film/:id/details', (req, res) => {
-    fs.readFile(PATH2, 'utf8', (err, filmsJson) => {
+    fs.readFile(PATH, 'utf8', (err, filmsJson) => {
         if (err) {
             console.log("File read failed in GET /film/" + req.params.id + "/details" + " : "+ err);
             res.status(500).send('File read failed');
@@ -110,9 +109,9 @@ app.post('/film', (req, res) => {
         }
         var films = JSON.parse(filmsJson);
         var id = getLastId(filmsJson);
-        id = id + 1;
+        id = parseInt(id) + 1;
         if (id) {
-            req.body.filmId = id;
+            req.body.filmId = id.toString();
             films.push(req.body);
             var newList = JSON.stringify(films);
             fs.writeFile(PATH, newList, err => {
