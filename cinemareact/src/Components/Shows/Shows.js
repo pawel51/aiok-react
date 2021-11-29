@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import axios from "axios";
-import {ListGroup, ListGroupItem, Spinner, Table} from "react-bootstrap";
+import {Badge, ListGroup, ListGroupItem, Spinner, Table} from "react-bootstrap";
+
 
 const Shows = (props) => {
     const [showsData, setShowsData] = useState([]);
@@ -8,7 +9,7 @@ const Shows = (props) => {
     const [filmsData, setFilmsData] = useState([])
     const [roomsData, setRoomsData] = useState([])
     const [isLoaded, setLoaded] = useState(0)
-
+    const [IdNameMap, setIdNameMap] = useState({})
 
     useEffect(() => {
         const fetchData = async() => {
@@ -26,7 +27,7 @@ const Shows = (props) => {
 
             const config3 = {
                 method: "get",
-                url: "http://localhost:7777/films",
+                url: "http://localhost:7777/rooms",
                 headers: { }
             }
             try {
@@ -40,10 +41,15 @@ const Shows = (props) => {
                 tempData2.push(...response2["data"])
                 setFilmsData(tempData2)
 
-                const tempData3 = []
-                const response3 = await axios(config3)
-                tempData3.push(...response3["data"])
-                setFilmsData(tempData3)
+                let map = {}
+                filmsData.forEach(film => {
+                    map.set(film.id, film.name)
+                })
+                setIdNameMap(map)
+                // const tempData3 = []
+                // const response3 = await axios(config3)
+                // tempData3.push(...response3["data"])
+                // setFilmsData(tempData3)
 
             } catch (err) {
                 console.log("error fetching img data", err)
@@ -61,11 +67,23 @@ const Shows = (props) => {
                 <div>
                     <input type={"date"} id={"SelectedDate"}/>
 
-                    <ListGroup horizontal variant={"flush"}>
-                        {showsData.map((v) => {
-                            return <
+                    <ListGroup variant={"flush"}>
+                        {showsData.map((show) => {
+                            return (
+                                <ListGroup horizontal variant={"flush"}>
+                                    <ListGroupItem>
+                                        <Badge bg={"info"}>{IdNameMap.get(show.id)}</Badge>
+                                        {show.hours.map((hour) => {
+                                            return <Badge bg={"dark"}>{hour}</Badge>
+                                        })}
+                                    </ListGroupItem>
+                                </ListGroup>
+                                )
+
                         })}
                     </ListGroup>
+
+                    {/*<Hour value={v}></Hour>*/}
                 </div>
             )}
         </div>

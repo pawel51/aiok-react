@@ -12,18 +12,18 @@ const App = () => {
 
         <BrowserRouter>
             <TopNavbar></TopNavbar>
-            {/*<Switch>*/}
-            {/*    <Route exact path={"/"} />*/}
-            {/*    /!*<Route path={"/repertuar"}/>*!/*/}
-            {/*    /!*<Route path={"/cennik"} />*!/*/}
-            {/*    <Route exact path={"/films"} component={Films}>*/}
-            {/*    </Route>*/}
-            {/*    <Route exact path={"/films/:id/details"} render={({match}) => {*/}
-            {/*        return <Details filmId={match.params.id}/>*/}
-            {/*    }}>*/}
-            {/*    </Route>*/}
-            {/*</Switch>*/}
-            <Shows></Shows>
+            <Switch>
+                <Route exact path={"/"} />
+                <Route path={"/shows"} component={Shows}/>
+                {/*<Route path={"/cennik"} />*/}
+                <Route exact path={"/films"} component={Films}>
+                </Route>
+                <Route exact path={"/films/:id/details"} render={({match}) => {
+                    return <Details filmId={match.params.id}/>
+                }}>
+                </Route>
+            </Switch>
+            {/*<Shows></Shows>*/}
         </BrowserRouter>
 
     )

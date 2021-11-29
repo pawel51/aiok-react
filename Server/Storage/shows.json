@@ -3,7 +3,7 @@
     "showId": "1",
     "filmId": "1",
     "date": "2021-12-24",
-    "hours": "14:00",
+    "hours": ["14:00"],
     "roomId": "1",
     "soldTickets": 0,
     "takenSeatsArray": []
