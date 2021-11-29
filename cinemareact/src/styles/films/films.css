@@ -1,0 +1,166 @@
+.cardImg {
+    height: 176px;
+    width: 128px;
+    justify-content: center;
+    transform: scale(1);
+    transition: transform .2s;
+}
+
+.singleCard {
+    width: 134px !important;
+    padding-left: 5px !important;
+    padding-right: 5px !important;
+    overflow: hidden !important;
+}
+
+.singleCard:hover {
+    cursor: pointer;
+}
+
+.singleCard:hover .cardImg{
+    transform: scale(1.7);
+}
+
+.filmContainer {
+    padding: 20px 20px;
+    flex-wrap: nowrap !important;
+    overflow: hidden;
+}
+
+.rateBadge {
+    justify-content: center;
+}
+
+.linkTo {
+    width: 144px !important;
+    display: flex;
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    transform: translateX(0px);
+    transition: .3s linear transform;
+}
+
+.detailsContainer {
+    padding-top: 30px;
+}
+
+.detailsImage {
+    width: 375px;
+    height: 555px;
+    transition: 0.6s linear;
+    animation-duration: 2s;
+    animation-name: imgSlideIn;
+    animation-iteration-count: initial;
+}
+
+@keyframes imgSlideIn {
+    0% {
+        transform: translateX(-500px);
+    }
+    100% {
+        transform: translateX(0px);
+    }
+}
+
+.input-group-edit {
+    padding-bottom: 10px;
+}
+
+.buttonCont {
+    bottom: 0;
+}
+
+
+
+.editButton {
+    background-color: gold !important;
+    margin-top: 20px !important;
+}
+.delButton {
+    background-color: indianred !important;
+    margin-top: 20px !important;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+.editIcon {
+    transform: rotate(0deg);
+    transition: 0.5s;
+}
+.delIcon {
+    transform: rotate(0deg);
+    transition: 0.5s;
+}
+
+.editButton:hover .editIcon {
+    transform: rotate(720deg);
+}
+.delButton:hover .delIcon {
+    transform: rotate(720deg);
+}
+
+.listGroupItem:hover {
+    background-color: azure;
+}
+
+.leftButton, .rightButton {
+    /*height: 50% !important;*/
+    background-color: black !important;
+}
+
+
+
+.leftCont, .rightCont {
+    display: flex !important;
+    vertical-align: center !important;
+}
+
+.rightCont {
+    justify-content: right !important;
+}
+
+.addFilmButton{
+    margin: 40px;
+    width: 200px;
+    height: 60px;
+    background-color: darkorange !important;
+}
+
+#addIcon {
+    transform: rotate3d(1,1,1,0deg);
+    transition: .5s;
+}
+
+.addFilmButton:hover #addIcon{
+    transform: rotate3d(1,1,1,360deg);
+}
+
+.plotBox {
+    margin-top: 20px !important;
+    border: 2px solid black;
+}
+
+.plot {
+    padding: 10px;
+    font-family: serif;
+
+}
+
+@keyframes iconbounce {
+    0% {
+        transform: translateX(-50px);
+    }
+    50% {
+        transform: translateX(50px);
+    }
+    100% {
+        transform: translateX(-50px);
+    }
+
+}
+
+.brandName {
+    font-size: 48px;
+
+}

@@ -24,3 +24,20 @@ git fetch <- zciągnąć zmiany z servera
 git checkout -b dev <- utworzenie lokalnego brancha development (i od razu przełączenie się na niego)
 git branch development -u origin/dev <- dodanie śledzenia zdalnej gałęzi
 git branch -vv <- spradzenie, czy śledzenie jest ustawione OK
+----
+----
+
+Instrukcja:
+git clone https://github.com/pawel51/aiok-react.git
+git checkout -b dev <- utworzenie lokalnego brancha development (i od razu przełączenie się na niego)
+git branch development -u origin/dev <- dodanie śledzenia zdalnej gałęzi
+
+cd aoik-react/cinemareact
+npm install
+npm start (port 3000)
+
+cd ../Server
+node index.js (port 7777)
+
+
+
