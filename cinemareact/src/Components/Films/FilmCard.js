@@ -1,6 +1,6 @@
 import React from 'react';
 import {Badge, Button, Card} from "react-bootstrap";
-import '../../styles/films/films.css'
+import '../../styles/films.css'
 
 const FilmCard = (props) => {
     const film = props.data

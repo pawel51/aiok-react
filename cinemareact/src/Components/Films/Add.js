@@ -3,7 +3,7 @@ import {Button, Form, InputGroup, Modal, Row} from "react-bootstrap";
 import { useForm } from 'react-hook-form';
 import {FontAwesomeIcon as FAI} from "@fortawesome/react-fontawesome";
 import {faEdit, faPlusSquare, faSave} from "@fortawesome/free-regular-svg-icons";
-import '../../styles/films/films.css'
+import '../../styles/films.css'
 import axios from "axios";
 
 

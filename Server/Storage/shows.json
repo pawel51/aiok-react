@@ -18,6 +18,9 @@
       "18:00",
       "21:30"
     ],
+    "seats": [
+
+    ],
     "roomId": "1",
     "soldTickets": 0,
     "takenSeatsArray": []

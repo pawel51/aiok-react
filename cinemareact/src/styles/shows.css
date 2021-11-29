@@ -1,0 +1,21 @@
+.showScreen{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.showList{
+    display: flex;
+    justify-content: left;
+}
+
+.titleBadge{
+    margin: 5px;
+}
+
+.hourBadge{
+    margin: 10px;
+}
+
+.hListGroup{
+    min-width: 1200px;
+}
