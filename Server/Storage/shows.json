@@ -1,0 +1,53 @@
+[
+  {
+    "showId": "1",
+    "filmId": "1",
+    "date": "2021-12-24",
+    "hours": "14:00",
+    "roomId": "1",
+    "soldTickets": 0,
+    "takenSeatsArray": []
+  },
+  {
+    "showId": "1",
+    "filmId": "2",
+    "date": "2021-12-26",
+    "hours": [
+      "10:00",
+      "14:00",
+      "18:00",
+      "21:30"
+    ],
+    "roomId": "1",
+    "soldTickets": 0,
+    "takenSeatsArray": []
+  },
+  {
+    "showId": "1",
+    "filmId": "3",
+    "date": "2021-12-27",
+    "hours": [
+      "10:00",
+      "14:00",
+      "18:00",
+      "21:30"
+    ],
+    "roomId": "1",
+    "soldTickets": 0,
+    "takenSeatsArray": []
+  },
+  {
+    "showId": "1",
+    "filmId": "4",
+    "date": "2021-12-28",
+    "hours": [
+      "10:00",
+      "14:00",
+      "18:00",
+      "21:30"
+    ],
+    "roomId": "1",
+    "soldTickets": 0,
+    "takenSeatsArray": []
+  }
+]

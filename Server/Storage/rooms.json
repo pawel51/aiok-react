@@ -1,0 +1,30 @@
+[
+  {
+    "roomId": "1",
+    "capacity": "1"
+  },
+  {
+    "roomId": "2",
+    "capacity": "200"
+  },
+  {
+    "roomId": "3",
+    "capacity": "210"
+  },
+  {
+    "roomId": "4",
+    "capacity": "180"
+  },
+  {
+    "roomId": "5",
+    "capacity": "220"
+  },
+  {
+    "roomId": "6",
+    "capacity": "230"
+  },
+  {
+    "roomId": "7",
+    "capacity": "200"
+  }
+]
