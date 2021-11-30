@@ -3,6 +3,8 @@ import axios from "axios";
 import {Badge, Col, Container, Image, ListGroup, ListGroupItem, Row, Spinner, Table} from "react-bootstrap";
 import * as PropTypes from "prop-types";
 import '../../styles/shows.css'
+import {Button} from "bootstrap";
+import {Link} from "react-router-dom";
 
 function Img(props) {
     return null;
@@ -81,33 +83,29 @@ const Shows = (props) => {
                 <div className={"showScreen"}>
                     <input type={"date"} id={"SelectedDate"}/>
 
-                    <ListGroup className={"showList"} variant={"flush"}>
+                    <ListGroup className={"vList"} variant={"flush"}>
                         {showsData.map((show) => {
                             return (
-                                <div >
-                                    <div >
-                                        <ListGroup horizontal variant={"flush"} className={"hListGroup"}>
-                                        <ListGroupItem>
-                                            <Container>
-                                                <Row>
-                                                    <Col>
-                                                        <Image src={IdImgMap.get(show.filmId)}/>
-                                                    </Col>
-                                                    <Col >
-                                                        <Badge className={"titleBadge"} bg={"info"}>{IdNameMap.get(show.filmId)}</Badge>
-                                                    </Col>
-                                                    <Col >
-                                                        {show.hours.map((hour) => {
-                                                            return <Badge className={"hourBadge"} bg={"dark"}>{hour}</Badge>
-                                                        })}
-                                                    </Col>
-                                                </Row>
-                                            </Container>
+                                    <ListGroupItem className={"vListItem"}>
+                                        <ListGroup horizontal variant={"flush"} className={"hList"}>
+                                            <ListGroupItem className={"hListItem"}>
 
-                                        </ListGroupItem>
-                                    </ListGroup>
-                                    </div>
-                                </div>
+                                                <Image src={IdImgMap.get(show.filmId)}/>
+                                                <Badge className={"titleBadge"} bg={"info"}>{IdNameMap.get(show.filmId)}</Badge>
+
+                                                {show.hours.map((hour, hourId) => {
+                                                    return (
+                                                            <Link className={"offLink"} to={`/show/tickets/${show.filmId}/${show.showId}/${hourId}`}>
+                                                                {hour}
+                                                            </Link>
+                                                        )
+
+                                                })}
+
+                                            </ListGroupItem>
+                                        </ListGroup>
+                                    </ListGroupItem>
+
 
                                 )
 

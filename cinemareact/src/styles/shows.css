@@ -9,13 +9,25 @@
 }
 
 .titleBadge{
-    margin: 5px;
+    margin: 20px;
+    min-width: 200px;
+    max-width: 200px;
 }
 
 .hourBadge{
     margin: 10px;
 }
 
-.hListGroup{
+.vList{
     min-width: 1200px;
+}
+
+.vListItem{
+    min-width:1200px
+}
+
+.offLink {
+    text-decoration: none;
+    color: #000065;
+    margin: 10px;
 }

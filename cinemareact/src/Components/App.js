@@ -6,6 +6,7 @@ import TopNavbar from "./TopNavbar";
 import Details from "./Films/Details";
 import Edit from "./Films/Edit";
 import Shows from "./Shows/Shows";
+import Tickets from "./Shows/Tickets";
 
 const App = () => {
     return (
@@ -22,6 +23,12 @@ const App = () => {
                     return <Details filmId={match.params.id}/>
                 }}>
                 </Route>
+                <Route exact path={"/shows/tickets/:filmId/:showId/:hourId"} render={({match}) => {
+                    //podstaw tu nazwę swojego komponentu z kupowaniem biletów
+                    return <Tickets filmId={match.params.filmId}
+                                    showId={match.params.showId}
+                                    hourId={match.params.hourId}/>
+                }}/>
             </Switch>
             {/*<Shows></Shows>*/}
         </BrowserRouter>
