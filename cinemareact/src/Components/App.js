@@ -23,7 +23,7 @@ const App = () => {
                     return <Details filmId={match.params.id}/>
                 }}>
                 </Route>
-                <Route exact path={"/shows/tickets/:filmId/:showId/:hourId"} render={({match}) => {
+                <Route exact path={"/show/tickets/:filmId/:showId/:hourId"} render={({match}) => {
                     //podstaw tu nazwę swojego komponentu z kupowaniem biletów
                     return <Tickets filmId={match.params.filmId}
                                     showId={match.params.showId}

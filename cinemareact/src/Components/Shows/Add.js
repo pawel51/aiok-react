@@ -192,8 +192,4 @@ const Add = (props) => {
 
 export default Add;
 
-Add.propTypes={
-    user: PropTypes.shape({
 
-    })
-}

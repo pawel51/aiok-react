@@ -9,12 +9,11 @@ import Delete from "./Delete";
 import Edit from "./Edit";
 
 
-const Shows = (props) => {
+const Shows = () => {
     const [showsData, setShowsData] = useState([]);
 
 
     const [date, setDate] = useState(new Date(Date.now()))
-    // const filmsData = props.filmData
     const [filmsData, setFilmsData] = useState([])
     const [isLoaded, setLoaded] = useState(false)
     const [IdNameMap, setIdNameMap] = useState(new Map())
@@ -174,7 +173,8 @@ const Shows = (props) => {
                                                     <Delete showId={show.showId}
                                                             showsData={showsData}
                                                             setShowsData={setShowsData}
-                                                            showTitle={show.showId+" "+IdNameMap.get(show.filmId)}/>
+                                                            showTitle={show.showId+" "+IdNameMap.get(show.filmId)}
+                                                            />
                                                 </ListGroupItem>
                                                 ) : (
                                                 <Spinner animation="grow" variant="dark" />
