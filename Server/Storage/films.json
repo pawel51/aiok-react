@@ -9,7 +9,7 @@
     "year": "2021",
     "image": "https://imdb-api.com/images/original/MV5BY2Y1ODBhYTItYmJiZi00NjU2LWI2NjktNTcwM2U2NGQ2ZTNiXkEyXkFqcGdeQXVyMTkxNjUyNQ@@._V1_Ratio0.6791_AL_.jpg",
     "smallImage": "https://m.media-amazon.com/images/M/MV5BMTExZmVjY2ItYTAzYi00MDdlLWFlOWItNTJhMDRjMzQ5ZGY0XkEyXkFqcGdeQXVyODIyOTEyMzY@._V1_UX128_CR0,3,128,176_AL_.jpg",
-    "releaseDate": "2021-10-28",
+    "releaseDate": "2021-1-28",
     "runtimeMins": "",
     "runtimeStr": "2h 30min",
     "plot": "Following the events of Avengers: Endgame (2019), an unexpected tragedy forces the Eternals, ancient aliens who have been living on Earth in secret for thousands of years, out of the shadows to reunite against mankind's most ancient enemy, the Deviants.",
@@ -61,7 +61,8 @@
         "id": "nm0534635",
         "name": "Richard Madden"
       }
-    ]
+    ],
+    "release": "2021-01-11"
   },
   {
     "filmId": "2",
@@ -520,18 +521,5 @@
         "name": "Marisa Tomei"
       }
     ]
-  },
-  {
-    "title": "New Film",
-    "release": "2021-11-24",
-    "runtimeStr": "2h 30min",
-    "awards": "",
-    "directors": "",
-    "writers": "",
-    "stars": "",
-    "imDbRating": "",
-    "smallImage": "",
-    "image": "",
-    "filmId": "10"
   }
 ]

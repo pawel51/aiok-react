@@ -17,6 +17,7 @@ const Add = (props) => {
     const handleClose = () => setShow(false)
 
     const onSubmit = data => {
+        data.filmId = createId();
         axios.post(`http://localhost:7777/film`, data)
             .then((response) => {
                 props.updateFilms(response.data)
@@ -26,6 +27,16 @@ const Add = (props) => {
             });
         handleClose()
     };
+
+    function createId(){
+        let id = 1;
+        //póki jest id , inkrementuj id
+        while(props.data.find(e => parseInt(e.id) === id) !== undefined){
+            id++
+        }
+        //zwróć pierwsze nienapotkane id
+        return id
+    }
 
     return (
         <>
@@ -48,7 +59,7 @@ const Add = (props) => {
                         <InputGroup className={'input-group-edit'}>
                             <InputGroup.Text style={{width:"80px"}} id="inputGroup-sizing-sm">Release</InputGroup.Text>
                             <input type={"date"} id={"Release"}
-                                   value={Date.now()}
+                                   defaultValue={new Date().toISOString().substr(0,10)}
                                    {...register('release')}
                                    className={`form-control ${errors.release ? 'is-invalid' : ''}`}/>
                         </InputGroup>

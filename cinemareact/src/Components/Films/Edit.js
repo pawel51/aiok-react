@@ -10,8 +10,9 @@ import axios from "axios";
 const Edit = (props) => {
     const [show, setShow] = useState(false)
 
-    const data = props.data
-    const setData = props.setData
+    // Props
+    const {data, setData} = props
+
 
 
 
@@ -77,10 +78,10 @@ const Edit = (props) => {
                         </InputGroup>
                         <InputGroup className={'input-group-edit'}>
                             <InputGroup.Text style={{width:"80px"}} id="inputGroup-sizing-sm">Release</InputGroup.Text>
-                            <input type={"date"} id={"Release"}
-                                   value={data.releaseDate}
-                                   {...register('release')}
-                                   className={`form-control ${errors.release ? 'is-invalid' : ''}`}/>
+                            <input type={"date"} id={"ReleaseDate"}
+                                   {...register('releaseDate')}
+                                   defaultValue={new Date(data.releaseDate).toISOString().substr(0,10)}
+                                   className={`form-control ${errors.releaseDate ? 'is-invalid' : ''}`}/>
                         </InputGroup>
                         <InputGroup className={'input-group-edit'}>
                             <InputGroup.Text style={{width:"80px"}} id="inputGroup-sizing-sm">Runtime</InputGroup.Text>

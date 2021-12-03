@@ -88,14 +88,15 @@
     transform: rotate(0deg);
     transition: 0.5s;
 }
+.editButton:hover .editIcon {
+    transform: rotate(720deg);
+}
 .delIcon {
     transform: rotate(0deg);
     transition: 0.5s;
 }
 
-.editButton:hover .editIcon {
-    transform: rotate(720deg);
-}
+
 .delButton:hover .delIcon {
     transform: rotate(720deg);
 }

@@ -15,7 +15,7 @@ const App = () => {
             <TopNavbar></TopNavbar>
             <Switch>
                 <Route exact path={"/"} />
-                <Route path={"/shows"} component={Shows}/>
+                <Route exact path={"/shows"} component={Shows}/>
                 {/*<Route path={"/cennik"} />*/}
                 <Route exact path={"/films"} component={Films}>
                 </Route>
