@@ -58,7 +58,7 @@ const Add = (props) => {
         let tempArray = [...hourList]
         const index = tempArray.indexOf(e.target.id)
         if (index==null) return
-        tempArray.split(index, 1)
+        tempArray.splice(index, 1)
         setHourList(tempArray)
     }
 

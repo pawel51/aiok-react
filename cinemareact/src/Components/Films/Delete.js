@@ -9,6 +9,8 @@ import {Link, Redirect} from 'react-router-dom'
 
 
 const Delete = (props) => {
+    const {filmId, title} = props
+
     const [show, setShow] = useState(false)
 
     const handleShow = () => setShow(true)

@@ -8,6 +8,9 @@ import axios from "axios";
 
 
 const Add = (props) => {
+
+    const {updateFilms, data} = props
+
     const [show, setShow] = useState(false)
 
     const {register, handleSubmit, reset, formState: {errors}} = useForm()
@@ -125,3 +128,4 @@ const Add = (props) => {
 };
 
 export default Add;
+

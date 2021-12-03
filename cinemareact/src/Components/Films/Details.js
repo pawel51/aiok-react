@@ -5,6 +5,8 @@ import Edit from "./Edit";
 import Delete from "./Delete";
 
 const Details = (props) => {
+    const filmId = props.filmId
+
     const [data, setData] = useState([{
         title: "",
         releaseDate: "",
@@ -86,3 +88,4 @@ const Details = (props) => {
 };
 
 export default Details;
+

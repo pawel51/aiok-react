@@ -17,7 +17,7 @@ const Delete = (props) => {
     const handleClose = () => setShow(false)
 
     const onSubmit = () => {
-        axios.delete(`http://localhost:7777/shows/${showId}`)
+        axios.delete(`http://localhost:7777/show/${showId}`)
             .then((response) => {
                 let index = showsData.indexOf(showsData.find(el => el.showId === showId))
                 if (index === - 1 || index == null) return
