@@ -27,7 +27,7 @@ const Edit = (props) => {
     // States
     const [hidden, setHidden] = useState(true)
     const [hourList, setHourList] = useState(hours)
-    const {register, handleSubmit, reset, formState: {errors}} = useForm(
+    const {register, handleSubmit, formState: {errors}} = useForm(
         {defaultValues: editedShow}
     )
     const [selectedHour, setSelectedHour] = useState("")

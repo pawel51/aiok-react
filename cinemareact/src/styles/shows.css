@@ -177,3 +177,21 @@
 .delButton:hover .delIcon {
     transform: rotate(720deg);
 }
+
+.loadingSpinner{
+    position: absolute;
+    transform: translate(calc(50vw - 50%), calc(50vh - 50%));
+    width: 50px;
+    height: 50px;
+
+}
+
+.param {
+    display: block;
+    width: 150px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #00005a;
+}
+
+

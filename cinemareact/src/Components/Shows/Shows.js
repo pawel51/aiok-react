@@ -152,7 +152,7 @@ const Shows = () => {
                                             {show !== undefined ? (
                                                 show.hours.sort((a,b) => a > b ? 1 : -1).map((hour, hourId) => {
                                                     return (
-                                                        <Link key={hourId} className={"offLink"} to={`/show/tickets/${show.filmId}/${show.showId}/${hourId}`}>
+                                                        <Link key={hourId} className={"offLink"} to={`/show/tickets/${show.filmId}/${show.showId}/${hour}/${show.roomId}`}>
                                                             {hour}
                                                         </Link>
                                                     )

@@ -26,5 +26,29 @@
   {
     "roomId": "7",
     "capacity": "200"
+  },
+  {
+    "roomId": "8",
+    "capacity": "200"
+  },
+  {
+    "roomId": "9",
+    "capacity": "200"
+  },
+  {
+    "roomId": "10",
+    "capacity": "200"
+  },
+  {
+    "roomId": "11",
+    "capacity": "200"
+  },
+  {
+    "roomId": "12",
+    "capacity": "200"
+  },
+  {
+    "roomId": "13",
+    "capacity": "200"
   }
 ]
