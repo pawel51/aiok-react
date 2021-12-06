@@ -13,7 +13,7 @@ import '../../styles/shows.css'
 import {FontAwesomeIcon as FAI} from "@fortawesome/react-fontawesome";
 import {faSave} from "@fortawesome/free-regular-svg-icons";
 import {addTime} from "../../Helpers/TimeHelper";
-import PropTypes from "react"
+import PropTypes from "prop-types"
 
 
 const Tickets = (props) => {
@@ -190,7 +190,11 @@ const Tickets = (props) => {
 };
 
 Tickets.propTypes = {
-    filmId: PropTypes.string.isRequired,
+    filmId:  function(props, propName, component){
+        if(props[propName] < 0){
+            return new Error(propName+" was too short")
+        }
+    },
     showId: PropTypes.string.isRequired,
     hour: PropTypes.string.isRequired,
     roomId: PropTypes.string.isRequired,

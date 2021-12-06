@@ -3,7 +3,7 @@ import {Button, Col, Container, Image, ListGroup, Row} from "react-bootstrap";
 import axios from "axios";
 import Edit from "./Edit";
 import Delete from "./Delete";
-import PropTypes from "react";
+import PropTypes from "prop-types";
 
 const Details = (props) => {
     const filmId = props.filmId

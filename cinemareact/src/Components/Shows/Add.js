@@ -16,7 +16,7 @@ import {FontAwesomeIcon as FAI} from "@fortawesome/react-fontawesome";
 import {faEdit, faPlusSquare, faSave, faArrowAltCircleRight} from "@fortawesome/free-regular-svg-icons";
 import '../../styles/shows.css'
 import axios from "axios";
-import PropTypes from "react";
+import PropTypes from "prop-types";
 
 
 const Add = (props) => {

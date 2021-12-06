@@ -1,7 +1,7 @@
 import React from 'react';
 import {Badge, Button, Card} from "react-bootstrap";
 import '../../styles/films.css'
-import PropTypes from "react";
+import {PropTypes} from "prop-types";
 
 const FilmCard = (props) => {
     const film = props.data

@@ -7,7 +7,7 @@ import '../../styles/films.css'
 import axios from "axios";
 import * as yup from 'yup'
 import {yupResolver} from "@hookform/resolvers/yup";
-import PropTypes from "react";
+import PropTypes from "prop-types";
 
 
 const Edit = (props) => {

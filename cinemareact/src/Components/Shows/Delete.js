@@ -5,7 +5,7 @@ import {faTrashCan, faXmarkCircle} from "@fortawesome/free-regular-svg-icons";
 import '../../styles/films.css'
 import axios from "axios";
 import {Link} from 'react-router-dom'
-import PropTypes from "react";
+import PropTypes from "prop-types";
 
 
 const Delete = (props) => {
