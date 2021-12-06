@@ -1,7 +1,7 @@
 [
   {
     "roomId": "1",
-    "capacity": "1"
+    "capacity": "100"
   },
   {
     "roomId": "2",
