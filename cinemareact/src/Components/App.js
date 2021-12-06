@@ -1,12 +1,11 @@
 import React from 'react';
-import {Button, Stack} from "react-bootstrap";
 import {BrowserRouter, Switch, Route} from "react-router-dom";
 import Films from "./Films/Films";
 import TopNavbar from "./TopNavbar";
 import Details from "./Films/Details";
-import Edit from "./Films/Edit";
 import Shows from "./Shows/Shows";
 import Tickets from "./Shows/Tickets";
+import CurrentShows from "./Shows/CurrentShows";
 
 const App = () => {
     return (
@@ -18,6 +17,9 @@ const App = () => {
                 <Route exact path={"/shows"} component={Shows}/>
                 {/*<Route path={"/cennik"} />*/}
                 <Route exact path={"/films"} component={Films}>
+                </Route>
+                <Route exact path={"/running"}>
+                    <CurrentShows/>
                 </Route>
                 <Route exact path={"/films/:id/details"} render={({match}) => {
                     return <Details filmId={match.params.id}/>

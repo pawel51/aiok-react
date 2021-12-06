@@ -1,8 +1,14 @@
 import React from 'react';
-import {Container, Nav, Navbar, NavDropdown, Stack} from "react-bootstrap";
-import {Link} from "react-router-dom";
+import {Container, Nav, Navbar} from "react-bootstrap";
+import {Link, withRouter} from "react-router-dom";
 
-const TopNavbar = () => {
+
+const TopNavbar = (props) => {
+    const redirectToCurrentShows = () => {
+        props.history.push('/running');
+    }
+
+
     return (
 
         <Navbar bg="light" expand="lg">
@@ -14,7 +20,8 @@ const TopNavbar = () => {
                         <Nav className="me-auto">
                             <Nav.Link as={Link} to={"/shows"}>Show</Nav.Link>
                             <Nav.Link as={Link} to={"/films"}>Movies</Nav.Link>
-                                                </Nav>
+                            <Nav.Link onClick={() => redirectToCurrentShows()}>Running</Nav.Link>
+                        </Nav>
                     </Navbar.Collapse>
                 </Container>
 
@@ -22,4 +29,4 @@ const TopNavbar = () => {
     );
 };
 
-export default TopNavbar;
+export default withRouter(TopNavbar);

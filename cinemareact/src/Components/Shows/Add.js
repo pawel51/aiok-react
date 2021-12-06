@@ -146,7 +146,7 @@ const Add = (props) => {
                                 <Col>
                                     <input  className={"timeInput"}
                                             type={"time"}
-                                            // defaultValue={new Date(Date.now()).toLocaleTimeString().substr(0,5)}
+                                            defaultValue={new Date(Date.now()).toISOString().substr(11,5)}
                                             // defaultValue={new Date(Date.now()).toLocaleTimeString().substr(0,5)}
                                             onChange={(e) => {
                                                     setSelectedHour(e.target.value)
@@ -189,6 +189,7 @@ const Add = (props) => {
 
     );
 };
+
 
 export default Add;
 

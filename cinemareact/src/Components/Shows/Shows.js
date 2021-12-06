@@ -7,7 +7,7 @@ import {Link} from "react-router-dom";
 import Add from "./Add";
 import Delete from "./Delete";
 import Edit from "./Edit";
-
+import {compareTwoDates, checkIfTimeIsBetween, addTime} from "../../Helpers/TimeHelper";
 
 const Shows = () => {
     const [showsData, setShowsData] = useState([]);
@@ -18,32 +18,41 @@ const Shows = () => {
     const [isLoaded, setLoaded] = useState(false)
     const [IdNameMap, setIdNameMap] = useState(new Map())
     const [IdImgMap, setIdImgMap] = useState(new Map())
+
     const [rooms, setRooms] = useState([])
 
-    // const sortedShows = showsData.sort((a,b) => IdNameMap.get(a.id) > IdNameMap.get(b.id) ? 1 : -1)
+    const [IdDurationMap, setIdDurationMap] = useState(new Map())
+    const [currentTime, setCurrentTime] = useState(new Date(Date.now()).toISOString().substr(11,5))
 
-    function compareTwoDates(date1, date2){
-        let y1 = date1.getFullYear()
-        let y2 = date2.getFullYear()
-        let m1 = date1.getMonth()
-        let m2 = date2.getMonth()
-        let d1 = date1.getDate()
-        let d2 = date2.getDate()
+    const useInterval = (callback, delay) => {
+        const savedCallback = React.useRef();
 
-        if (y1 > y2) return 1;
-        if (y2 > y1) return -1;
-        if(y1===y2){
-            if(m1>m2) return 1;
-            if(m2>m1) return -1;
-            if(m2===m1){
-                if(d1>d2) return 1;
-                if(d2>d1) return -1;
-                    if(d1===d2)
-                        return 0;
+        React.useEffect(() => {
+            savedCallback.current = callback;
+        }, [callback]);
+
+        React.useEffect(() => {
+            const tick = () => {
+                savedCallback.current();
             }
-        }
+            if (delay !== null) {
+                let id = setInterval(tick, delay);
+                return () => clearInterval(id);
+            }
+        }, [delay]);
+    };
+
+    useInterval(() => {
+        setCurrentTime(new Date(Date.now()).toISOString().substr(11,5))
+    }, 60000)
 
 
+
+    // działa tylko dla seansów z obecnej daty (nie z daty wybranej przez użytkownika!)
+    const checkIfFilmIsShowing = (filmId, hour) =>
+    {
+        let endHour = addTime(hour, IdDurationMap.get(filmId))
+        checkIfTimeIsBetween(hour, currentTime, endHour)
     }
 
     useEffect(() => {
@@ -92,6 +101,11 @@ const Shows = () => {
                     imgMap.set(film.filmId, film.smallImage)
                 })
                 setIdImgMap(imgMap)
+                let idDurationMap = new Map()
+                tempData.forEach(film => {
+                    idDurationMap.set(film.filmId, film.runtimeStr)
+                })
+                setIdDurationMap(idDurationMap)
             } catch (err) {
                 console.log("error fetching films data:", err)
             }
@@ -109,9 +123,22 @@ const Shows = () => {
                 headers: { }
             }
             try{
-                const tempData = []
+                let tempData = []
                 const response = await axios(showsConfig)
                 tempData.push(...(response["data"]).filter(e => compareTwoDates(new Date(e.date) ,date) === 0))
+
+                tempData = tempData.map(show => {
+                    let sum = 0
+                    for (const key in show.soldTickets)
+                        sum += show.soldTickets[key]
+                    show.sum = sum
+                    return show
+                })
+
+                tempData.sort((a,b) => a.sum < b.sum ? 1 : -1)
+
+
+
                 setShowsData(tempData)
             } catch (err) {
                 console.log("error fetching shows data: ", err)
@@ -142,6 +169,15 @@ const Shows = () => {
                                 <ListGroupItem key={i} className={"vListItem"}>
                                     <ListGroup horizontal className={"hList"}>
                                         <ListGroupItem className={"hListItem"}>
+                                            <Badge>{i+1}</Badge>
+                                        </ListGroupItem>
+                                        <ListGroupItem className={"hListItem"}>
+                                            <ListGroup>
+                                                <span>Sold tickets today</span>
+                                                <span>{show.sum}</span>
+                                            </ListGroup>
+                                        </ListGroupItem>
+                                        <ListGroupItem className={"hListItem"}>
 
                                             <Image src={IdImgMap.get(show.filmId)}/>
                                         </ListGroupItem>
@@ -149,8 +185,10 @@ const Shows = () => {
                                             <Badge className={"titleBadge"} bg={"info"}>{IdNameMap.get(show.filmId)}</Badge>
                                         </ListGroupItem>
                                         <ListGroupItem className={"hListItem"}>
+
                                             {show !== undefined ? (
                                                 show.hours.sort((a,b) => a > b ? 1 : -1).map((hour, hourId) => {
+
                                                     return (
                                                         <Link key={hourId} className={"offLink"} to={`/show/tickets/${show.filmId}/${show.showId}/${hour}/${show.roomId}`}>
                                                             {hour}

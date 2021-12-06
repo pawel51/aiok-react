@@ -12,6 +12,7 @@ import axios from "axios";
 import '../../styles/shows.css'
 import {FontAwesomeIcon as FAI} from "@fortawesome/react-fontawesome";
 import {faSave} from "@fortawesome/free-regular-svg-icons";
+import {addTime} from "../../Helpers/TimeHelper";
 
 const Tickets = (props) => {
 
@@ -95,31 +96,6 @@ const Tickets = (props) => {
     }, [roomData])
 
 
-    function addTime(start, duration) {
-
-        if (start===undefined || duration===undefined) return "0"
-        let durationHours = parseInt(duration[0])
-        let durationMinutes = parseInt(duration.substr(3,2))
-        if (!durationHours) durationHours=0
-        if (!durationMinutes) durationMinutes=0
-
-        let startHour = parseInt(start.substr(0,2))
-        let startMinute = parseInt(start.substr(3,2))
-
-        let endHour = startHour + durationHours
-        let endMinute = startMinute + durationMinutes
-
-        if (endMinute >= 60){
-            endMinute -= 60
-            endHour += 1
-        }
-
-        if (endHour >= 24) endHour -= 24
-
-        return endHour+":"+endMinute
-
-    }
-
     function getFreeSeatsCount(roomCapacity, hour) {
         if(roomCapacity === undefined) return 0
         let soldTicketsCount = showData.soldTickets[hour]
@@ -133,11 +109,12 @@ const Tickets = (props) => {
             alert("Not enough free seats!")
             return
         }
-
+        if (showData.soldTickets[hour] == null) showData.soldTickets[hour] = 0
         showData.soldTickets[hour] += ticketCount
         axios.put(`http://localhost:7777/show/${showData.showId}`, showData)
             .then(() => {
-                setFreeSeatsCount(freeSeatsCount - ticketCount)
+                // if (freeSeatsCount === undefined) setFreeSeatsCount(roomData.capacity)
+                setFreeSeatsCount(getFreeSeatsCount(roomData.capacity, hour))
                 alert(`Successfully reserved ${ticketCount} places`)
             })
     }
@@ -193,9 +170,9 @@ const Tickets = (props) => {
                             <Col>
                                 <Button onClick={() => increment()}>+</Button>
                             </Col>
-                            <Col>
-                                <p><span className={"param"}>Free Seats:</span>{freeSeatsCount}</p>
-                            </Col>
+                            {/*<Col>*/}
+                            {/*    <p><span className={"param"}>Free Seats:</span>{freeSeatsCount}</p>*/}
+                            {/*</Col>*/}
                         </Row>
                     </Container>
                     <Button variant="primary" onClick={() => buyTickets()}>

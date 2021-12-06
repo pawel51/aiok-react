@@ -55,6 +55,10 @@
 
 }
 
+.runningShow {
+    background-color: #ee2929 !important;
+}
+
 .hListItem {
     display: flex !important;
     background-color: #fffbe6 !important;
