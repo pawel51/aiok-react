@@ -13,8 +13,7 @@ const App = () => {
         <BrowserRouter>
             <TopNavbar></TopNavbar>
             <Switch>
-                <Route exact path={"/"} />
-                <Route exact path={"/shows"} component={Shows}/>
+                <Route exact path={"/"} component={Shows} />
                 {/*<Route path={"/cennik"} />*/}
                 <Route exact path={"/films"} component={Films}>
                 </Route>

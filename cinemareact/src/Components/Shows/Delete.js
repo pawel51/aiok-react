@@ -46,7 +46,7 @@ const Delete = (props) => {
                     Are you sure, you want to delete show {showTitle} ?
                 </Modal.Body>
                 <Modal.Footer>
-                    <Link to={"/shows"}>
+                    <Link to={"/"}>
                         <Button variant={"primary"} onClick={onSubmit}>
                             <FAI icon={faTrashCan}/>
                         </Button>

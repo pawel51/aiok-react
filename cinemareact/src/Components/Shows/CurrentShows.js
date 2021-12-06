@@ -89,7 +89,7 @@ const CurrentShows = () => {
                 for (const show of tempData){
                     let showHours = []      //godziny danego seansu do pokazania
                     for (const hour of show.hours) {
-                        if (checkIfTimeIsBetween(hour, currentTime, addTime(hour, IdDurationMap.get(show.filmId))))
+                        if (checkIfTimeIsBetween(hour, addTime(currentTime, "1h 00min"), addTime(hour, IdDurationMap.get(show.filmId))))
                             showHours.push(hour)
                     }
                     if (showHours.length > 0){

@@ -74,8 +74,9 @@ const Add = (props) => {
 
     const onSubmit = data => {
         data.hours = hourList
-        data.soldTickets = 0
-        data.takenSeatsArray = []
+        data.soldTickets = {}
+        for (const hour of hourList)
+            data.soldTickets[hour] = 0;
 
         data.showId = createId()
 
@@ -146,7 +147,7 @@ const Add = (props) => {
                                 <Col>
                                     <input  className={"timeInput"}
                                             type={"time"}
-                                            defaultValue={new Date(Date.now()).toISOString().substr(11,5)}
+                                            // defaultValue={new Date(Date.now()).toISOString().substr(11,5)}
                                             // defaultValue={new Date(Date.now()).toLocaleTimeString().substr(0,5)}
                                             onChange={(e) => {
                                                     setSelectedHour(e.target.value)

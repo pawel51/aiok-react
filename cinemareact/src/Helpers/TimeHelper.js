@@ -45,7 +45,20 @@ function addTime(start, duration) {
 
     if (endHour >= 24) endHour -= 24
 
-    return endHour+":"+endMinute
+    let retEndhour = ""
+    let retEndminute = ""
+
+    if (endHour < 10)
+        retEndhour = "0" + endHour
+    else
+        retEndhour = endHour.toString()
+
+    if (endMinute < 10)
+        retEndminute = "0" + endMinute
+    else
+        retEndminute = endMinute.toString()
+
+    return retEndhour+":"+retEndminute
 
 }
 

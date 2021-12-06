@@ -90,18 +90,21 @@ const Tickets = (props) => {
     }, [filmData])
 
     useEffect(()=>{
-
+        if (!isLoaded) return
         let tempCount = getFreeSeatsCount(roomData.capacity, hour)
         setFreeSeatsCount(tempCount)
-    }, [roomData])
+    }, [isLoaded])
 
 
     function getFreeSeatsCount(roomCapacity, hour) {
         if(roomCapacity === undefined) return 0
+        if(!(hour in showData.soldTickets)) showData.soldTickets[hour] = 0
         let soldTicketsCount = showData.soldTickets[hour]
         let result = parseInt(roomCapacity) - soldTicketsCount
         if(isNaN(result))
             return roomCapacity
+
+        return result
     }
 
     const buyTickets = () => {
@@ -170,9 +173,9 @@ const Tickets = (props) => {
                             <Col>
                                 <Button onClick={() => increment()}>+</Button>
                             </Col>
-                            {/*<Col>*/}
-                            {/*    <p><span className={"param"}>Free Seats:</span>{freeSeatsCount}</p>*/}
-                            {/*</Col>*/}
+                            <Col>
+                                <p><span className={"param"}>Free Seats:</span>{freeSeatsCount}</p>
+                            </Col>
                         </Row>
                     </Container>
                     <Button variant="primary" onClick={() => buyTickets()}>
