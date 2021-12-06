@@ -13,6 +13,8 @@ import '../../styles/shows.css'
 import {FontAwesomeIcon as FAI} from "@fortawesome/react-fontawesome";
 import {faSave} from "@fortawesome/free-regular-svg-icons";
 import {addTime} from "../../Helpers/TimeHelper";
+import PropTypes from "react"
+
 
 const Tickets = (props) => {
 
@@ -186,5 +188,12 @@ const Tickets = (props) => {
         </div>
     );
 };
+
+Tickets.propTypes = {
+    filmId: PropTypes.string.isRequired,
+    showId: PropTypes.string.isRequired,
+    hour: PropTypes.string.isRequired,
+    roomId: PropTypes.string.isRequired,
+}
 
 export default Tickets;

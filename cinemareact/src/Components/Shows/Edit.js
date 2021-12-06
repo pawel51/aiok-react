@@ -16,6 +16,7 @@ import {FontAwesomeIcon as FAI} from "@fortawesome/react-fontawesome";
 import {faEdit, faPlusSquare, faSave, faArrowAltCircleRight} from "@fortawesome/free-regular-svg-icons";
 import '../../styles/shows.css'
 import axios from "axios";
+import PropTypes from "react";
 
 
 const Edit = (props) => {
@@ -183,5 +184,14 @@ const Edit = (props) => {
 
     );
 };
+
+Edit.propTypes = {
+    showId: PropTypes.string.isRequired,
+    showsData: PropTypes.object.isRequired,
+    setShowsData: PropTypes.func.isRequired,
+    showTitle: PropTypes.func.isRequired,
+    hours: PropTypes.arrayOf(PropTypes.string).isRequired,
+    rooms: PropTypes.array.isRequired
+}
 
 export default Edit;

@@ -5,6 +5,7 @@ import {faTrashCan, faXmarkCircle} from "@fortawesome/free-regular-svg-icons";
 import '../../styles/films.css'
 import axios from "axios";
 import {Link} from 'react-router-dom'
+import PropTypes from "react";
 
 
 const Delete = (props) => {
@@ -54,8 +55,14 @@ const Delete = (props) => {
                 </Modal.Footer>
             </Modal>
         </>
-
     );
 };
+
+Delete.propTypes = {
+    showId: PropTypes.string.isRequired,
+    showsData: PropTypes.object.isRequired,
+    setShowsData: PropTypes.func.isRequired,
+    showTitle: PropTypes.string.isRequired
+}
 
 export default Delete;
