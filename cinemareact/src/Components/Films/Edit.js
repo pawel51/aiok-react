@@ -7,6 +7,7 @@ import '../../styles/films.css'
 import axios from "axios";
 import * as yup from 'yup'
 import {yupResolver} from "@hookform/resolvers/yup";
+import PropTypes from "react";
 
 
 const Edit = (props) => {
@@ -180,5 +181,10 @@ const Edit = (props) => {
 
     );
 };
+
+Edit.propTypes = {
+    data: PropTypes.object.isRequired,
+    setData: PropTypes.func.isRequired
+}
 
 export default Edit;

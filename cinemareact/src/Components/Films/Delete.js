@@ -6,6 +6,7 @@ import {faPlusSquare, faTrashCan, faXmarkCircle} from "@fortawesome/free-regular
 import '../../styles/films.css'
 import axios from "axios";
 import {Link, Redirect} from 'react-router-dom'
+import PropTypes from "react";
 
 
 const Delete = (props) => {
@@ -53,5 +54,10 @@ const Delete = (props) => {
 
     );
 };
+
+Delete.propTypes = {
+    filmId: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired
+}
 
 export default Delete;

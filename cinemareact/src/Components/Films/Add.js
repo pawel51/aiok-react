@@ -5,6 +5,7 @@ import {FontAwesomeIcon as FAI} from "@fortawesome/react-fontawesome";
 import {faEdit, faPlusSquare, faSave} from "@fortawesome/free-regular-svg-icons";
 import '../../styles/films.css'
 import axios from "axios";
+import PropTypes from "react";
 
 
 const Add = (props) => {
@@ -173,6 +174,11 @@ const Add = (props) => {
 
     );
 };
+
+Add.propTypes = {
+    updateFilms: PropTypes.func.isRequired,
+    data: PropTypes.object.isRequired
+}
 
 export default Add;
 

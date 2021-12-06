@@ -1,6 +1,7 @@
 import React from 'react';
 import {Badge, Button, Card} from "react-bootstrap";
 import '../../styles/films.css'
+import PropTypes from "react";
 
 const FilmCard = (props) => {
     const film = props.data
@@ -17,5 +18,9 @@ const FilmCard = (props) => {
         </Card>
     );
 };
+
+FilmCard.propTypes = {
+    data: PropTypes.object.isRequired
+}
 
 export default FilmCard;

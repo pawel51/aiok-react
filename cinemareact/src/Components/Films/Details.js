@@ -3,6 +3,7 @@ import {Button, Col, Container, Image, ListGroup, Row} from "react-bootstrap";
 import axios from "axios";
 import Edit from "./Edit";
 import Delete from "./Delete";
+import PropTypes from "react";
 
 const Details = (props) => {
     const filmId = props.filmId
@@ -86,6 +87,10 @@ const Details = (props) => {
         </Container>
     );
 };
+
+Details.propTypes = {
+    filmId: PropTypes.string.isRequired
+}
 
 export default Details;
 
