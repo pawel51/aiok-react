@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import axios from 'axios'
 import {Button, Col, Container, Image, Row} from "react-bootstrap";
-import '../../styles/films/films.css'
+import '../../styles/films.css'
 import FilmCard from "./FilmCard";
 import {Link} from "react-router-dom";
 import {faCaretSquareLeft, faCaretSquareRight} from "@fortawesome/free-regular-svg-icons";

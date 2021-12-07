@@ -1,0 +1,36 @@
+[
+  {
+    "roomId": "1",
+    "capacity": "1",
+    "free": 0
+  },
+  {
+    "roomId": "2",
+    "capacity": "200",
+    "free": 0
+  },
+  {
+    "roomId": "3",
+    "capacity": "210",
+    "free": 0
+  },
+  {
+    "roomId": "4",
+    "capacity": "180"
+  },
+  {
+    "roomId": "5",
+    "capacity": "220",
+    "free": 0
+  },
+  {
+    "roomId": "6",
+    "capacity": "230",
+    "free": 0
+  },
+  {
+    "roomId": "7",
+    "capacity": "200",
+    "free": 0
+  }
+]

@@ -1,25 +1,26 @@
 import React from 'react';
-import {Container, Nav, Navbar, NavDropdown, Stack} from "react-bootstrap";
-import {Link} from "react-router-dom";
+import {Container, Nav, Navbar} from "react-bootstrap";
+import {Link, withRouter} from "react-router-dom";
 
-const TopNavbar = () => {
+
+const TopNavbar = (props) => {
+    const redirectToCurrentShows = () => {
+        props.history.push('/running');
+    }
+
+
     return (
 
         <Navbar bg="light" expand="lg">
 
                 <Container>
-                    <Navbar.Brand href="#home" className={"brandName"}>CINEMA CITY</Navbar.Brand>
+                    <Navbar.Brand className={"brandName"}>CINEMA CITY</Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="me-auto">
-                            <Nav.Link href="#home">Home</Nav.Link>
-                            <Nav.Link><Link to={"/films"}>Movies</Link></Nav.Link>
-                            <NavDropdown title="Choose cinema" id="basic-nav-dropdown">
-                                <NavDropdown.Item href="#action/3.2">Białystok</NavDropdown.Item>
-                                <NavDropdown.Item href="#action/3.3">Kielce</NavDropdown.Item>
-                                <NavDropdown.Item href="#action/3.1">warszawa</NavDropdown.Item>
-                            </NavDropdown>
-
+                            <Nav.Link as={Link} to={"/"}>Shows</Nav.Link>
+                            <Nav.Link as={Link} to={"/films"}>Movies</Nav.Link>
+                            <Nav.Link onClick={() => redirectToCurrentShows()}>Running</Nav.Link>
                         </Nav>
                     </Navbar.Collapse>
                 </Container>
@@ -28,4 +29,4 @@ const TopNavbar = () => {
     );
 };
 
-export default TopNavbar;
+export default withRouter(TopNavbar);
