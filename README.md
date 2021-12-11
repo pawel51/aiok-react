@@ -1,2 +1,3 @@
 # aiok-react
-projekt reactjs
+
+Strona Kina do edycji repertuaru i wyświetlanych filmów w technologii reactjs
