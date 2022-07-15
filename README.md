@@ -1,5 +1,6 @@
-# aiok-react
+# Film management site
 
-Strona Kina do edycji repertuaru i wyświetlanych filmów
-frontend - reactjs
-backend - node.js express
+## Technologies
+- React.js + node.js express server
+
+![carousel](img1.PNG)
